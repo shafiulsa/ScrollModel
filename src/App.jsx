@@ -1,5 +1,5 @@
 
-import { useEffect, useRef, Suspense } from "react";
+import { useEffect, useRef, Suspense, useState } from "react";
 import "./App.css";
 import gsap from "gsap";
 import _ScrollTrigger, { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -13,13 +13,14 @@ gsap.registerPlugin(_ScrollTrigger, CustomEase);
 function App() {
   const mainRef = useRef(null);
   const sceneRef = useRef(null);
+  const[progress,setProgress]=useState(0);
 
   useEffect(() => {
   // Set initial position
-  gsap.set(sceneRef.current, {
-    xPercent: 0,
-    yPercent: 0,
-  });
+  // gsap.set(sceneRef.current, {
+  //   xPercent: 0,
+  //   yPercent: 0,
+  // });
 
   const tl = gsap.timeline({
     scrollTrigger: {
@@ -27,6 +28,10 @@ function App() {
       start: "top top",
       end: "bottom bottom",
       scrub: 1,
+      onUpdate: (self) => {
+        setProgress(self.progress);
+        // console.log(progress)
+      } 
     },
   });
 
@@ -67,7 +72,7 @@ function App() {
           className="fixed top-0 left-0 w-screen h-screen pointer-events-none z-10"
         >
           <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
-            <Scene />
+            <Scene progress={progress} />
           </Canvas>
         </div>
 
