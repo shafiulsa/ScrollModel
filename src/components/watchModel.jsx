@@ -9,7 +9,7 @@ import { useGLTF, useAnimations } from '@react-three/drei'
 export function WatchModel({ modelRef, ...props }) {
   const localGroup = React.useRef()
   const { nodes, materials, animations } = useGLTF('/watchM.glb')
-  const { actions } = useAnimations(animations, modelRef || localGroup)
+  useAnimations(animations, modelRef || localGroup)
   return (
     <group ref={modelRef || localGroup} {...props} dispose={null}>
       <group name="Scene">

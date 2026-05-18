@@ -1,13 +1,9 @@
-import { Environment, OrbitControls } from '@react-three/drei';
+import { Environment } from '@react-three/drei';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import React from 'react'
-import { Watch } from './watch';
 import { WatchModel } from './watchModel';
 import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { useEffect } from 'react';
-gsap.registerEffect(ScrollTrigger);
 
 
 
@@ -109,7 +105,7 @@ export const Scene = ({ modelRef, progress }) => {
             })}
         };
         updateCamPos();
-    }, [progress,cameraRef.current])
+    }, [progress])
 
     return (
         <>

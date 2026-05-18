@@ -2,13 +2,13 @@
 import { useEffect, useRef, Suspense, useState } from "react";
 import "./App.css";
 import gsap from "gsap";
-import _ScrollTrigger, { ScrollTrigger } from "gsap/ScrollTrigger";
+import ScrollTrigger from "gsap/ScrollTrigger";
 // import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { Canvas } from "@react-three/fiber";
 import { Scene } from "./components/Scene";
 import { CustomEase } from "gsap/CustomEase";
 
-gsap.registerPlugin(_ScrollTrigger, CustomEase);
+gsap.registerPlugin(ScrollTrigger, CustomEase);
 
 function App() {
   const mainRef = useRef(null);
